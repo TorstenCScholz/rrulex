@@ -1,0 +1,63 @@
+{
+  "meta": {
+    "dtstart": "2026-01-01T09:00:00",
+    "limit": 1000,
+    "rules": {
+      "exdate": [],
+      "exrule": [],
+      "rdate": [],
+      "rrule": [
+        "FREQ=MONTHLY;BYDAY=1FR;COUNT=6"
+      ]
+    },
+    "tz": "Europe/Berlin",
+    "window": {
+      "end": null,
+      "start": null
+    }
+  },
+  "occurrences": [
+    {
+      "rule_index": 0,
+      "source": "RRULE",
+      "start_local": "2026-01-02T09:00:00",
+      "start_utc": "2026-01-02T08:00:00Z",
+      "tz": "Europe/Berlin"
+    },
+    {
+      "rule_index": 0,
+      "source": "RRULE",
+      "start_local": "2026-02-06T09:00:00",
+      "start_utc": "2026-02-06T08:00:00Z",
+      "tz": "Europe/Berlin"
+    },
+    {
+      "rule_index": 0,
+      "source": "RRULE",
+      "start_local": "2026-03-06T09:00:00",
+      "start_utc": "2026-03-06T08:00:00Z",
+      "tz": "Europe/Berlin"
+    },
+    {
+      "rule_index": 0,
+      "source": "RRULE",
+      "start_local": "2026-04-03T09:00:00",
+      "start_utc": "2026-04-03T07:00:00Z",
+      "tz": "Europe/Berlin"
+    },
+    {
+      "rule_index": 0,
+      "source": "RRULE",
+      "start_local": "2026-05-01T09:00:00",
+      "start_utc": "2026-05-01T07:00:00Z",
+      "tz": "Europe/Berlin"
+    },
+    {
+      "rule_index": 0,
+      "source": "RRULE",
+      "start_local": "2026-06-05T09:00:00",
+      "start_utc": "2026-06-05T07:00:00Z",
+      "tz": "Europe/Berlin"
+    }
+  ]
+}

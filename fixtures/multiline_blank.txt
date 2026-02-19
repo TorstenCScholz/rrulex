@@ -1,7 +1,0 @@
-First line of text.
-
-Second line after a blank.
-
-Third line after another blank.
-
-Final line.

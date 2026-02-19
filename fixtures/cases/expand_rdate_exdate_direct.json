@@ -1,0 +1,1 @@
+{"args":["expand","--dtstart","2026-03-01T10:00:00","--tz","Europe/Berlin","--rrule","FREQ=DAILY;COUNT=5","--rdate","2026-03-10T10:00:00","--exdate","2026-03-03T10:00:00","--format","json"],"expected_exit":0,"golden":"expand_rdate_exdate_direct.json"}

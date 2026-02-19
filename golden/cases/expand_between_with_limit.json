@@ -1,0 +1,238 @@
+{
+  "meta": {
+    "dtstart": "2026-01-01T10:00:00",
+    "limit": 40,
+    "rules": {
+      "exdate": [],
+      "exrule": [],
+      "rdate": [],
+      "rrule": [
+        "FREQ=DAILY;COUNT=31"
+      ]
+    },
+    "tz": "Europe/Berlin",
+    "window": {
+      "end": "2026-01-31T23:59:59",
+      "start": "2026-01-01T00:00:00"
+    }
+  },
+  "occurrences": [
+    {
+      "rule_index": 0,
+      "source": "RRULE",
+      "start_local": "2026-01-01T10:00:00",
+      "start_utc": "2026-01-01T09:00:00Z",
+      "tz": "Europe/Berlin"
+    },
+    {
+      "rule_index": 0,
+      "source": "RRULE",
+      "start_local": "2026-01-02T10:00:00",
+      "start_utc": "2026-01-02T09:00:00Z",
+      "tz": "Europe/Berlin"
+    },
+    {
+      "rule_index": 0,
+      "source": "RRULE",
+      "start_local": "2026-01-03T10:00:00",
+      "start_utc": "2026-01-03T09:00:00Z",
+      "tz": "Europe/Berlin"
+    },
+    {
+      "rule_index": 0,
+      "source": "RRULE",
+      "start_local": "2026-01-04T10:00:00",
+      "start_utc": "2026-01-04T09:00:00Z",
+      "tz": "Europe/Berlin"
+    },
+    {
+      "rule_index": 0,
+      "source": "RRULE",
+      "start_local": "2026-01-05T10:00:00",
+      "start_utc": "2026-01-05T09:00:00Z",
+      "tz": "Europe/Berlin"
+    },
+    {
+      "rule_index": 0,
+      "source": "RRULE",
+      "start_local": "2026-01-06T10:00:00",
+      "start_utc": "2026-01-06T09:00:00Z",
+      "tz": "Europe/Berlin"
+    },
+    {
+      "rule_index": 0,
+      "source": "RRULE",
+      "start_local": "2026-01-07T10:00:00",
+      "start_utc": "2026-01-07T09:00:00Z",
+      "tz": "Europe/Berlin"
+    },
+    {
+      "rule_index": 0,
+      "source": "RRULE",
+      "start_local": "2026-01-08T10:00:00",
+      "start_utc": "2026-01-08T09:00:00Z",
+      "tz": "Europe/Berlin"
+    },
+    {
+      "rule_index": 0,
+      "source": "RRULE",
+      "start_local": "2026-01-09T10:00:00",
+      "start_utc": "2026-01-09T09:00:00Z",
+      "tz": "Europe/Berlin"
+    },
+    {
+      "rule_index": 0,
+      "source": "RRULE",
+      "start_local": "2026-01-10T10:00:00",
+      "start_utc": "2026-01-10T09:00:00Z",
+      "tz": "Europe/Berlin"
+    },
+    {
+      "rule_index": 0,
+      "source": "RRULE",
+      "start_local": "2026-01-11T10:00:00",
+      "start_utc": "2026-01-11T09:00:00Z",
+      "tz": "Europe/Berlin"
+    },
+    {
+      "rule_index": 0,
+      "source": "RRULE",
+      "start_local": "2026-01-12T10:00:00",
+      "start_utc": "2026-01-12T09:00:00Z",
+      "tz": "Europe/Berlin"
+    },
+    {
+      "rule_index": 0,
+      "source": "RRULE",
+      "start_local": "2026-01-13T10:00:00",
+      "start_utc": "2026-01-13T09:00:00Z",
+      "tz": "Europe/Berlin"
+    },
+    {
+      "rule_index": 0,
+      "source": "RRULE",
+      "start_local": "2026-01-14T10:00:00",
+      "start_utc": "2026-01-14T09:00:00Z",
+      "tz": "Europe/Berlin"
+    },
+    {
+      "rule_index": 0,
+      "source": "RRULE",
+      "start_local": "2026-01-15T10:00:00",
+      "start_utc": "2026-01-15T09:00:00Z",
+      "tz": "Europe/Berlin"
+    },
+    {
+      "rule_index": 0,
+      "source": "RRULE",
+      "start_local": "2026-01-16T10:00:00",
+      "start_utc": "2026-01-16T09:00:00Z",
+      "tz": "Europe/Berlin"
+    },
+    {
+      "rule_index": 0,
+      "source": "RRULE",
+      "start_local": "2026-01-17T10:00:00",
+      "start_utc": "2026-01-17T09:00:00Z",
+      "tz": "Europe/Berlin"
+    },
+    {
+      "rule_index": 0,
+      "source": "RRULE",
+      "start_local": "2026-01-18T10:00:00",
+      "start_utc": "2026-01-18T09:00:00Z",
+      "tz": "Europe/Berlin"
+    },
+    {
+      "rule_index": 0,
+      "source": "RRULE",
+      "start_local": "2026-01-19T10:00:00",
+      "start_utc": "2026-01-19T09:00:00Z",
+      "tz": "Europe/Berlin"
+    },
+    {
+      "rule_index": 0,
+      "source": "RRULE",
+      "start_local": "2026-01-20T10:00:00",
+      "start_utc": "2026-01-20T09:00:00Z",
+      "tz": "Europe/Berlin"
+    },
+    {
+      "rule_index": 0,
+      "source": "RRULE",
+      "start_local": "2026-01-21T10:00:00",
+      "start_utc": "2026-01-21T09:00:00Z",
+      "tz": "Europe/Berlin"
+    },
+    {
+      "rule_index": 0,
+      "source": "RRULE",
+      "start_local": "2026-01-22T10:00:00",
+      "start_utc": "2026-01-22T09:00:00Z",
+      "tz": "Europe/Berlin"
+    },
+    {
+      "rule_index": 0,
+      "source": "RRULE",
+      "start_local": "2026-01-23T10:00:00",
+      "start_utc": "2026-01-23T09:00:00Z",
+      "tz": "Europe/Berlin"
+    },
+    {
+      "rule_index": 0,
+      "source": "RRULE",
+      "start_local": "2026-01-24T10:00:00",
+      "start_utc": "2026-01-24T09:00:00Z",
+      "tz": "Europe/Berlin"
+    },
+    {
+      "rule_index": 0,
+      "source": "RRULE",
+      "start_local": "2026-01-25T10:00:00",
+      "start_utc": "2026-01-25T09:00:00Z",
+      "tz": "Europe/Berlin"
+    },
+    {
+      "rule_index": 0,
+      "source": "RRULE",
+      "start_local": "2026-01-26T10:00:00",
+      "start_utc": "2026-01-26T09:00:00Z",
+      "tz": "Europe/Berlin"
+    },
+    {
+      "rule_index": 0,
+      "source": "RRULE",
+      "start_local": "2026-01-27T10:00:00",
+      "start_utc": "2026-01-27T09:00:00Z",
+      "tz": "Europe/Berlin"
+    },
+    {
+      "rule_index": 0,
+      "source": "RRULE",
+      "start_local": "2026-01-28T10:00:00",
+      "start_utc": "2026-01-28T09:00:00Z",
+      "tz": "Europe/Berlin"
+    },
+    {
+      "rule_index": 0,
+      "source": "RRULE",
+      "start_local": "2026-01-29T10:00:00",
+      "start_utc": "2026-01-29T09:00:00Z",
+      "tz": "Europe/Berlin"
+    },
+    {
+      "rule_index": 0,
+      "source": "RRULE",
+      "start_local": "2026-01-30T10:00:00",
+      "start_utc": "2026-01-30T09:00:00Z",
+      "tz": "Europe/Berlin"
+    },
+    {
+      "rule_index": 0,
+      "source": "RRULE",
+      "start_local": "2026-01-31T10:00:00",
+      "start_utc": "2026-01-31T09:00:00Z",
+      "tz": "Europe/Berlin"
+    }
+  ]
+}

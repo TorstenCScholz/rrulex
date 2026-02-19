@@ -1,0 +1,11 @@
+{
+  "errors": [
+    {
+      "code": "E001",
+      "details": "DTSTART is DATE but UNTIL is DATE-TIME. Use UNTIL=YYYYMMDD.",
+      "message": "UNTIL value type must match DTSTART"
+    }
+  ],
+  "hints": [],
+  "warnings": []
+}

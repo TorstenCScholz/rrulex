@@ -1,0 +1,1 @@
+{"args":["expand","--dtstart","2026-10-24T10:00:00","--tz","Europe/Berlin","--rrule","FREQ=DAILY;COUNT=5","--format","json"],"expected_exit":0,"golden":"expand_dst_berlin_fall.json"}

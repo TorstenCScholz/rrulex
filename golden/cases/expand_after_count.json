@@ -1,0 +1,56 @@
+{
+  "meta": {
+    "dtstart": "2026-03-01T10:00:00",
+    "limit": 1000,
+    "rules": {
+      "exdate": [],
+      "exrule": [],
+      "rdate": [],
+      "rrule": [
+        "FREQ=DAILY"
+      ]
+    },
+    "tz": "Europe/Berlin",
+    "window": {
+      "end": null,
+      "start": "2026-03-05T00:00:00"
+    }
+  },
+  "occurrences": [
+    {
+      "rule_index": 0,
+      "source": "RRULE",
+      "start_local": "2026-03-05T10:00:00",
+      "start_utc": "2026-03-05T09:00:00Z",
+      "tz": "Europe/Berlin"
+    },
+    {
+      "rule_index": 0,
+      "source": "RRULE",
+      "start_local": "2026-03-06T10:00:00",
+      "start_utc": "2026-03-06T09:00:00Z",
+      "tz": "Europe/Berlin"
+    },
+    {
+      "rule_index": 0,
+      "source": "RRULE",
+      "start_local": "2026-03-07T10:00:00",
+      "start_utc": "2026-03-07T09:00:00Z",
+      "tz": "Europe/Berlin"
+    },
+    {
+      "rule_index": 0,
+      "source": "RRULE",
+      "start_local": "2026-03-08T10:00:00",
+      "start_utc": "2026-03-08T09:00:00Z",
+      "tz": "Europe/Berlin"
+    },
+    {
+      "rule_index": 0,
+      "source": "RRULE",
+      "start_local": "2026-03-09T10:00:00",
+      "start_utc": "2026-03-09T09:00:00Z",
+      "tz": "Europe/Berlin"
+    }
+  ]
+}

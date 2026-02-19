@@ -1,0 +1,1 @@
+{"args":["lint","--dtstart","2026-04-01","--tz","Europe/Berlin","--rrule","FREQ=DAILY;UNTIL=20260403T000000Z","--format","json"],"expected_exit":0,"golden":"lint_date_dtstart_until_datetime_mismatch.json"}

@@ -1,0 +1,1 @@
+{"args":["explain","--at","2026-03-04T10:00:00","--dtstart","2026-03-01T10:00:00","--tz","Europe/Berlin","--rrule","FREQ=WEEKLY;BYDAY=MO;COUNT=3","--rrule","FREQ=WEEKLY;BYDAY=WE;COUNT=3","--format","json"],"expected_exit":0,"golden":"explain_multiple_rrule_index.json"}

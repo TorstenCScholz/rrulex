@@ -1,0 +1,1 @@
+{"args":["expand","--ics","fixtures/ics/date_dtstart.ics","--format","json"],"expected_exit":0,"golden":"expand_ics_date_dtstart.json"}

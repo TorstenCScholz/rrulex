@@ -2,7 +2,17 @@ use std::fs;
 use std::path::{Path, PathBuf};
 use std::process::Command;
 
+use serde::Deserialize;
 use similar::{ChangeTag, TextDiff};
+
+#[derive(Debug, Deserialize)]
+struct FixtureCase {
+    args: Vec<String>,
+    #[serde(default)]
+    expected_exit: i32,
+    golden: Option<String>,
+    stderr_contains: Option<String>,
+}
 
 fn project_root() -> PathBuf {
     Path::new(env!("CARGO_MANIFEST_DIR"))
@@ -14,11 +24,11 @@ fn project_root() -> PathBuf {
 }
 
 fn fixture_dir() -> PathBuf {
-    project_root().join("fixtures")
+    project_root().join("fixtures/cases")
 }
 
 fn golden_dir() -> PathBuf {
-    project_root().join("golden")
+    project_root().join("golden/cases")
 }
 
 fn update_golden() -> bool {
@@ -40,46 +50,70 @@ fn diff_strings(expected: &str, actual: &str) -> String {
 }
 
 #[test]
-fn golden_json_output() {
-    let fixtures = fixture_dir();
-    let golden = golden_dir();
+fn fixture_cases() {
+    let fixture_dir = fixture_dir();
+    let golden_dir = golden_dir();
 
-    let mut entries: Vec<_> = fs::read_dir(&fixtures)
-        .expect("Failed to read fixtures directory")
-        .filter_map(|e| e.ok())
-        .filter(|e| e.path().extension().is_some_and(|ext| ext == "txt"))
+    let mut entries: Vec<_> = fs::read_dir(&fixture_dir)
+        .expect("Failed to read fixtures/cases directory")
+        .filter_map(Result::ok)
+        .filter(|e| e.path().extension().is_some_and(|ext| ext == "json"))
         .collect();
-    entries.sort_by_key(|e| e.file_name());
 
+    entries.sort_by_key(|entry| entry.file_name());
     assert!(
         !entries.is_empty(),
-        "No fixture files found in {fixtures:?}"
+        "No fixture cases found in {fixture_dir:?}"
     );
 
     for entry in entries {
-        let fixture_path = entry.path();
-        let stem = fixture_path.file_stem().unwrap().to_str().unwrap();
-        let golden_path = golden.join(format!("{stem}.json"));
+        let case_path = entry.path();
+        let case_name = case_path.file_stem().unwrap().to_string_lossy().to_string();
+
+        let raw = fs::read_to_string(&case_path)
+            .unwrap_or_else(|e| panic!("Failed to read fixture case {case_path:?}: {e}"));
+        let case: FixtureCase = serde_json::from_str(&raw)
+            .unwrap_or_else(|e| panic!("Invalid JSON in fixture case {case_path:?}: {e}"));
 
         let output = Command::new(env!("CARGO_BIN_EXE_rrulex"))
-            .arg("--format")
-            .arg("json")
-            .arg(&fixture_path)
+            .current_dir(project_root())
+            .args(&case.args)
             .output()
-            .expect("Failed to execute tool-cli");
+            .unwrap_or_else(|e| panic!("Failed to execute rrulex for case {case_name}: {e}"));
 
-        assert!(
-            output.status.success(),
-            "tool-cli failed for {}: {}",
-            stem,
-            String::from_utf8_lossy(&output.stderr)
-        );
+        let status_code = output.status.code().unwrap_or(-1);
+        let stdout = String::from_utf8(output.stdout)
+            .unwrap_or_else(|e| panic!("Stdout not UTF-8 for case {case_name}: {e}"));
+        let stderr = String::from_utf8(output.stderr)
+            .unwrap_or_else(|e| panic!("Stderr not UTF-8 for case {case_name}: {e}"));
 
-        let actual = String::from_utf8(output.stdout).expect("Output is not valid UTF-8");
+        if status_code != case.expected_exit {
+            panic!(
+                "Unexpected exit code for {case_name}: got {status_code}, expected {}\n\nstdout:\n{}\n\nstderr:\n{}",
+                case.expected_exit, stdout, stderr
+            );
+        }
+
+        if let Some(expected_fragment) = case.stderr_contains.as_deref() {
+            assert!(
+                stderr.contains(expected_fragment),
+                "Expected stderr for {case_name} to contain '{expected_fragment}', got:\n{stderr}"
+            );
+        }
+
+        if case.expected_exit != 0 {
+            continue;
+        }
+
+        let golden_name = case
+            .golden
+            .as_deref()
+            .unwrap_or_else(|| panic!("Case {case_name} must provide a golden filename"));
+        let golden_path = golden_dir.join(golden_name);
 
         if update_golden() {
-            fs::create_dir_all(&golden).ok();
-            fs::write(&golden_path, &actual)
+            fs::create_dir_all(&golden_dir).expect("Failed to create golden/cases directory");
+            fs::write(&golden_path, &stdout)
                 .unwrap_or_else(|e| panic!("Failed to write golden file {golden_path:?}: {e}"));
             eprintln!("Updated golden file: {golden_path:?}");
             continue;
@@ -87,17 +121,17 @@ fn golden_json_output() {
 
         let expected = fs::read_to_string(&golden_path).unwrap_or_else(|e| {
             panic!(
-                "Golden file {golden_path:?} not found: {e}\n\
-                 Hint: Run with UPDATE_GOLDEN=1 to generate golden files"
+                "Golden file {golden_path:?} missing for case {case_name}: {e}\n\
+                 Hint: run with UPDATE_GOLDEN=1 cargo test -p rrulex --test golden_tests"
             )
         });
 
-        if actual != expected {
-            let diff = diff_strings(&expected, &actual);
+        if expected != stdout {
+            let diff = diff_strings(&expected, &stdout);
             panic!(
-                "Golden test mismatch for {stem}:\n\n\
-                 {diff}\n\n\
-                 Run with UPDATE_GOLDEN=1 to refresh snapshots"
+                "Golden mismatch for {case_name} ({golden_name})\n\n{}\n\n\
+                 Run with UPDATE_GOLDEN=1 to refresh snapshots",
+                diff
             );
         }
     }

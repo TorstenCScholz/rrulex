@@ -1,0 +1,1 @@
+{"args":["lint","--dtstart","2026-03-01T10:00:00","--tz","Europe/Berlin","--rrule","FREQ=DAILY;UNTIL=20260310T100000","--format","json"],"expected_exit":0,"golden":"lint_until_local_warning.json"}

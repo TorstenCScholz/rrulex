@@ -1,0 +1,1 @@
+{"args":["expand","--ics","fixtures/ics/basic_weekly.ics","--format","json"],"expected_exit":0,"golden":"expand_ics_basic_weekly.json"}

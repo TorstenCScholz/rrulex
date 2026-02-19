@@ -1,0 +1,1 @@
+{"args":["lint","--dtstart","2026-03-01T10:00:00","--tz","Europe/Berlin","--rrule","FREQ=DAILY","--limit","1000","--format","json"],"expected_exit":0,"golden":"lint_unbounded_with_limit_context.json"}

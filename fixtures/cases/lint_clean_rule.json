@@ -1,0 +1,1 @@
+{"args":["lint","--dtstart","2026-03-01T10:00:00","--tz","Europe/Berlin","--rrule","FREQ=WEEKLY;BYDAY=MO,WE;COUNT=10","--format","json"],"expected_exit":0,"golden":"lint_clean_rule.json"}

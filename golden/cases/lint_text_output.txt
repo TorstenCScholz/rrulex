@@ -1,0 +1,2 @@
+WARN W002: Potentially unbounded rule
+WARN W003: BYSETPOS without BYxxx context

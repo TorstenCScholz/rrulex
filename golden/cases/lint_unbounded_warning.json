@@ -1,0 +1,11 @@
+{
+  "errors": [],
+  "hints": [],
+  "warnings": [
+    {
+      "code": "W002",
+      "details": "No COUNT/UNTIL and no --between/--limit context was provided.",
+      "message": "Potentially unbounded rule"
+    }
+  ]
+}

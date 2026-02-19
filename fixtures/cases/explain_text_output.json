@@ -1,0 +1,1 @@
+{"args":["explain","--at","2026-03-03T10:00:00","--dtstart","2026-03-01T10:00:00","--tz","Europe/Berlin","--rrule","FREQ=DAILY;COUNT=5","--format","text"],"expected_exit":0,"golden":"explain_text_output.txt"}

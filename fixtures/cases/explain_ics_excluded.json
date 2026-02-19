@@ -1,0 +1,1 @@
+{"args":["explain","--ics","fixtures/ics/include_exclude.ics","--at","2026-03-03T10:00:00","--format","json"],"expected_exit":0,"golden":"explain_ics_excluded.json"}

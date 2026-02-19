@@ -1,0 +1,1 @@
+{"args":["expand","--ics","fixtures/ics/include_exclude.ics","--format","json"],"expected_exit":0,"golden":"expand_ics_include_exclude.json"}

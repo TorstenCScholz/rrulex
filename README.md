@@ -1,12 +1,8 @@
 # rrulex
 
-> A template repository for small, weird-but-useful Rust CLI tools.
+Deterministic RFC 5545 recurrence tooling for CLI workflows.
 
-[![CI](https://github.com/TorstenCScholz/rrulex.git/actions/workflows/ci.yml/badge.svg)](https://github.com/TorstenCScholz/rrulex.git/actions/workflows/ci.yml)
-
-## Problem
-
-_(Describe what problem this tool solves.)_
+`rrulex` expands RRULE-based schedules, lints common spec footguns, and explains inclusion/exclusion for a concrete datetime.
 
 ## Install
 
@@ -14,110 +10,147 @@ _(Describe what problem this tool solves.)_
 cargo install rrulex
 ```
 
-Or download a pre-built binary from [Releases](https://github.com/TorstenCScholz/rrulex.git/releases).
+## Commands
 
-## Usage
+### `expand`
+
+Expand occurrences from `DTSTART + RRULE (+ optional RDATE/EXDATE/EXRULE)`.
 
 ```sh
-# Human-readable output
-rrulex file.txt
-
-# JSON output
-rrulex --format json file.txt
-
-# Multiple files
-rrulex --format json *.txt
-
-# Verbose logging
-rrulex --verbose file.txt
+rrulex expand \
+  --dtstart "2026-03-01T10:00:00" \
+  --tz "Europe/Berlin" \
+  --rrule "FREQ=WEEKLY;BYDAY=MO,WE;COUNT=10" \
+  --format json
 ```
 
-### Example output (text)
+From ICS:
 
-```
---- file.txt ---
-  Lines:            42
-  Words:            300
-  Characters:       1800
-  Bytes:            1800
-  Most common word: the
-  Unique words:     150
+```sh
+rrulex expand --ics ./fixtures/ics/basic_weekly.ics --format json
 ```
 
-### Example output (JSON)
+Windowed query:
+
+```sh
+rrulex expand \
+  --dtstart "2026-03-01T10:00:00" \
+  --tz "Europe/Berlin" \
+  --rrule "FREQ=DAILY;COUNT=100" \
+  --between "2026-03-01T00:00:00" "2026-03-31T23:59:59" \
+  --limit 1000 \
+  --format json
+```
+
+### `lint`
+
+Lint RRULE specs without expansion.
+
+```sh
+rrulex lint \
+  --dtstart "2026-03-01T10:00:00" \
+  --tz "Europe/Berlin" \
+  --rrule "FREQ=DAILY;UNTIL=20260310" \
+  --format json
+```
+
+Current rule set (v0.1):
+- `E001`: `UNTIL` value type must match `DTSTART` (DATE vs DATE-TIME)
+- `W001`: `UNTIL` as local/floating time (no `Z`)
+- `W002`: potentially unbounded rule in lint context without window/limit
+- `W003`: suspicious `BYSETPOS` usage without BYxxx context
+
+### `explain`
+
+Explain whether a datetime is included/excluded and by which ruleset component.
+
+```sh
+rrulex explain \
+  --at "2026-03-11T10:00:00" \
+  --dtstart "2026-03-01T10:00:00" \
+  --tz "Europe/Berlin" \
+  --rrule "FREQ=DAILY;COUNT=20" \
+  --exdate "2026-03-11T10:00:00" \
+  --format json
+```
+
+## Input Modes
+
+Exactly one of:
+- `--ics <path>`
+- Direct flags: `--dtstart <iso> --tz <iana> --rrule <string> ...`
+
+Direct mode supports repeatable:
+- `--rrule`
+- `--rdate`
+- `--exrule`
+- `--exdate`
+
+## Deterministic JSON Contract
+
+`expand --format json` returns:
 
 ```json
 {
-  "lines": 42,
-  "words": 300,
-  "chars": 1800,
-  "bytes": 1800,
-  "most_common_word": "the",
-  "unique_words": 150
+  "meta": {
+    "dtstart": "...",
+    "tz": "Europe/Berlin",
+    "rules": {
+      "rrule": ["..."],
+      "rdate": ["..."],
+      "exrule": ["..."],
+      "exdate": ["..."]
+    },
+    "window": { "start": "...", "end": "..." },
+    "limit": 1000
+  },
+  "occurrences": [
+    {
+      "start_local": "2026-03-02T10:00:00",
+      "start_utc": "2026-03-02T09:00:00Z",
+      "tz": "Europe/Berlin",
+      "source": "RRULE",
+      "rule_index": 0
+    }
+  ]
 }
 ```
 
-## Output Contract
+Determinism guarantees:
+- occurrences are sorted consistently
+- stable key ordering via canonical JSON helper
+- stable array ordering
 
-JSON output fields (single file):
+## Exit Codes
 
-| Field               | Type            | Description                        |
-|---------------------|-----------------|------------------------------------|
-| `lines`             | `integer`       | Number of lines                    |
-| `words`             | `integer`       | Number of whitespace-delimited words |
-| `chars`             | `integer`       | Number of Unicode characters       |
-| `bytes`             | `integer`       | Number of bytes                    |
-| `most_common_word`  | `string\|null`  | Most frequent word (lowercased), `null` if no words |
-| `unique_words`      | `integer`       | Number of distinct words (lowercased) |
-
-When multiple files are passed, the output is an object keyed by file path.
-
-## Using This Template
-
-1. Clone/copy this repo
-2. Run the rename script:
-   ```sh
-   ./scripts/rename_tool.sh my-tool "My awesome tool description" "https://github.com/user/my-tool"
-   ```
-3. Replace the `TextStats` logic in `crates/tool-core/src/lib.rs` with your own
-4. Update fixtures and golden files:
-   ```sh
-   UPDATE_GOLDEN=1 cargo test
-   ```
-
-### Optional: cargo-dist
-
-This template ships with a manual release workflow. To switch to [cargo-dist](https://opensource.axo.dev/cargo-dist/):
-
-```sh
-cargo install cargo-dist
-cargo dist init
-```
+- `0`: success
+- `2`: input/validation errors
+- `3`: safety errors (limit exceeded, unsafe unbounded expansion)
 
 ## Development
 
 ```sh
-# Run tests
-cargo test --all
-
-# Update golden files after changing output
-UPDATE_GOLDEN=1 cargo test
-
-# Lint
-cargo clippy --all-targets -- -D warnings
-
-# Format
 cargo fmt --all
+cargo clippy --all-targets --all-features -- -D warnings
+cargo test --all
 ```
 
-## Limitations
+Golden refresh:
 
-_(List known limitations here.)_
+```sh
+UPDATE_GOLDEN=1 cargo test -p rrulex --test golden_tests
+```
 
-## Roadmap
+## Test Fixtures
 
-- [ ] Placeholder item
+- `fixtures/cases/`: declarative CLI fixture cases (38 cases in v0.1)
+- `fixtures/ics/`: minimal ICS inputs
+- `golden/cases/`: expected stdout snapshots
 
-## License
-
-Licensed under either of [Apache License, Version 2.0](LICENSE-APACHE) or [MIT License](LICENSE-MIT) at your option.
+Includes mandatory scenarios:
+- weekly MO/WE with COUNT
+- monthly first Friday (`BYDAY=1FR`)
+- yearly `BYMONTH + BYDAY`
+- DST boundaries (`Europe/Berlin`, spring/fall)
+- `UNTIL`/`DTSTART` mismatch linting
+- RDATE/EXDATE include/exclude behavior

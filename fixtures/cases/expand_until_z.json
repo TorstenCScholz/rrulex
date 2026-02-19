@@ -1,0 +1,1 @@
+{"args":["expand","--dtstart","2026-03-01T10:00:00","--tz","Europe/Berlin","--rrule","FREQ=DAILY;UNTIL=20260305T090000Z","--format","json"],"expected_exit":0,"golden":"expand_until_z.json"}

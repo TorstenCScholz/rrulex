@@ -1,0 +1,42 @@
+{
+  "meta": {
+    "dtstart": "2026-04-01T00:00:00",
+    "limit": 1000,
+    "rules": {
+      "exdate": [],
+      "exrule": [],
+      "rdate": [],
+      "rrule": [
+        "FREQ=DAILY;COUNT=3"
+      ]
+    },
+    "tz": "Europe/Berlin",
+    "window": {
+      "end": null,
+      "start": null
+    }
+  },
+  "occurrences": [
+    {
+      "rule_index": 0,
+      "source": "RRULE",
+      "start_local": "2026-04-01T00:00:00",
+      "start_utc": "2026-03-31T22:00:00Z",
+      "tz": "Europe/Berlin"
+    },
+    {
+      "rule_index": 0,
+      "source": "RRULE",
+      "start_local": "2026-04-02T00:00:00",
+      "start_utc": "2026-04-01T22:00:00Z",
+      "tz": "Europe/Berlin"
+    },
+    {
+      "rule_index": 0,
+      "source": "RRULE",
+      "start_local": "2026-04-03T00:00:00",
+      "start_utc": "2026-04-02T22:00:00Z",
+      "tz": "Europe/Berlin"
+    }
+  ]
+}

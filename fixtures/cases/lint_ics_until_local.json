@@ -1,0 +1,1 @@
+{"args":["lint","--ics","fixtures/ics/until_local.ics","--format","json"],"expected_exit":0,"golden":"lint_ics_until_local.json"}

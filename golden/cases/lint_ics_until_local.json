@@ -1,0 +1,11 @@
+{
+  "errors": [],
+  "hints": [],
+  "warnings": [
+    {
+      "code": "W001",
+      "details": "Prefer UNTIL with 'Z' (UTC) to avoid timezone ambiguity across systems.",
+      "message": "UNTIL appears as local/floating time"
+    }
+  ]
+}

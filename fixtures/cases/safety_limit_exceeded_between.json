@@ -1,0 +1,1 @@
+{"args":["expand","--dtstart","2026-01-01T10:00:00","--tz","Europe/Berlin","--rrule","FREQ=DAILY;COUNT=31","--between","2026-01-01T00:00:00","2026-01-31T23:59:59","--limit","10","--format","json"],"expected_exit":3,"stderr_contains":"hard limit exceeded"}

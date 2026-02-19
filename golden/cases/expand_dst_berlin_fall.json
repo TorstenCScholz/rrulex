@@ -1,0 +1,56 @@
+{
+  "meta": {
+    "dtstart": "2026-10-24T10:00:00",
+    "limit": 1000,
+    "rules": {
+      "exdate": [],
+      "exrule": [],
+      "rdate": [],
+      "rrule": [
+        "FREQ=DAILY;COUNT=5"
+      ]
+    },
+    "tz": "Europe/Berlin",
+    "window": {
+      "end": null,
+      "start": null
+    }
+  },
+  "occurrences": [
+    {
+      "rule_index": 0,
+      "source": "RRULE",
+      "start_local": "2026-10-24T10:00:00",
+      "start_utc": "2026-10-24T08:00:00Z",
+      "tz": "Europe/Berlin"
+    },
+    {
+      "rule_index": 0,
+      "source": "RRULE",
+      "start_local": "2026-10-25T10:00:00",
+      "start_utc": "2026-10-25T09:00:00Z",
+      "tz": "Europe/Berlin"
+    },
+    {
+      "rule_index": 0,
+      "source": "RRULE",
+      "start_local": "2026-10-26T10:00:00",
+      "start_utc": "2026-10-26T09:00:00Z",
+      "tz": "Europe/Berlin"
+    },
+    {
+      "rule_index": 0,
+      "source": "RRULE",
+      "start_local": "2026-10-27T10:00:00",
+      "start_utc": "2026-10-27T09:00:00Z",
+      "tz": "Europe/Berlin"
+    },
+    {
+      "rule_index": 0,
+      "source": "RRULE",
+      "start_local": "2026-10-28T10:00:00",
+      "start_utc": "2026-10-28T09:00:00Z",
+      "tz": "Europe/Berlin"
+    }
+  ]
+}

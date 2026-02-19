@@ -1,0 +1,56 @@
+{
+  "meta": {
+    "dtstart": "2026-01-01T10:00:00",
+    "limit": 1000,
+    "rules": {
+      "exdate": [],
+      "exrule": [],
+      "rdate": [],
+      "rrule": [
+        "FREQ=YEARLY;BYMONTH=3;BYDAY=2MO;COUNT=5"
+      ]
+    },
+    "tz": "Europe/Berlin",
+    "window": {
+      "end": null,
+      "start": null
+    }
+  },
+  "occurrences": [
+    {
+      "rule_index": 0,
+      "source": "RRULE",
+      "start_local": "2026-03-09T10:00:00",
+      "start_utc": "2026-03-09T09:00:00Z",
+      "tz": "Europe/Berlin"
+    },
+    {
+      "rule_index": 0,
+      "source": "RRULE",
+      "start_local": "2027-03-08T10:00:00",
+      "start_utc": "2027-03-08T09:00:00Z",
+      "tz": "Europe/Berlin"
+    },
+    {
+      "rule_index": 0,
+      "source": "RRULE",
+      "start_local": "2028-03-13T10:00:00",
+      "start_utc": "2028-03-13T09:00:00Z",
+      "tz": "Europe/Berlin"
+    },
+    {
+      "rule_index": 0,
+      "source": "RRULE",
+      "start_local": "2029-03-12T10:00:00",
+      "start_utc": "2029-03-12T09:00:00Z",
+      "tz": "Europe/Berlin"
+    },
+    {
+      "rule_index": 0,
+      "source": "RRULE",
+      "start_local": "2030-03-11T10:00:00",
+      "start_utc": "2030-03-11T09:00:00Z",
+      "tz": "Europe/Berlin"
+    }
+  ]
+}

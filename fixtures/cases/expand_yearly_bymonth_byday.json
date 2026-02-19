@@ -1,0 +1,1 @@
+{"args":["expand","--dtstart","2026-01-01T10:00:00","--tz","Europe/Berlin","--rrule","FREQ=YEARLY;BYMONTH=3;BYDAY=2MO;COUNT=5","--format","json"],"expected_exit":0,"golden":"expand_yearly_bymonth_byday.json"}

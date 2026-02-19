@@ -1,0 +1,16 @@
+{
+  "errors": [],
+  "hints": [],
+  "warnings": [
+    {
+      "code": "W002",
+      "details": "No COUNT/UNTIL and no --between/--limit context was provided.",
+      "message": "Potentially unbounded rule"
+    },
+    {
+      "code": "W003",
+      "details": "BYSETPOS is typically only meaningful with BYDAY/BYMONTHDAY/etc.",
+      "message": "BYSETPOS without BYxxx context"
+    }
+  ]
+}

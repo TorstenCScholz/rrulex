@@ -1,21 +1,20 @@
 [package]
-name = "rrulex-cli"
-description = "A CLI tool"
+name = "rrulex"
+description = "CLI-first RFC5545 RRULE expander + linter + explain tool"
 version.workspace = true
 edition.workspace = true
 license.workspace = true
 repository.workspace = true
 
 [[bin]]
-name = "rrulex-cli"
+name = "rrulex"
 path = "src/main.rs"
 
 [dependencies]
 rrulex-core = { path = "../rrulex-core" }
 clap = { version = "4", features = ["derive"] }
 serde_json = "1"
-tracing = "0.1"
-tracing-subscriber = { version = "0.3", features = ["env-filter"] }
+serde = { version = "1", features = ["derive"] }
 anyhow = "1"
 
 [dev-dependencies]

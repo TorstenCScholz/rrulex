@@ -1,6 +1,6 @@
 [package]
-name = "tool-core"
-description = "Core analysis library for wtools-template"
+name = "rrulex-core"
+description = "A CLI tool — core library"
 version.workspace = true
 edition.workspace = true
 license.workspace = true

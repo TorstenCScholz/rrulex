@@ -1,8 +1,8 @@
-# wtools-template
+# rrulex
 
 > A template repository for small, weird-but-useful Rust CLI tools.
 
-[![CI](https://github.com/OWNER/REPO/actions/workflows/ci.yml/badge.svg)](https://github.com/OWNER/REPO/actions/workflows/ci.yml)
+[![CI](https://github.com/TorstenCScholz/rrulex.git/actions/workflows/ci.yml/badge.svg)](https://github.com/TorstenCScholz/rrulex.git/actions/workflows/ci.yml)
 
 ## Problem
 
@@ -11,25 +11,25 @@ _(Describe what problem this tool solves.)_
 ## Install
 
 ```sh
-cargo install tool-cli
+cargo install rrulex
 ```
 
-Or download a pre-built binary from [Releases](https://github.com/OWNER/REPO/releases).
+Or download a pre-built binary from [Releases](https://github.com/TorstenCScholz/rrulex.git/releases).
 
 ## Usage
 
 ```sh
 # Human-readable output
-tool-cli file.txt
+rrulex file.txt
 
 # JSON output
-tool-cli --format json file.txt
+rrulex --format json file.txt
 
 # Multiple files
-tool-cli --format json *.txt
+rrulex --format json *.txt
 
 # Verbose logging
-tool-cli --verbose file.txt
+rrulex --verbose file.txt
 ```
 
 ### Example output (text)

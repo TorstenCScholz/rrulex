@@ -1,17 +1,17 @@
 [package]
-name = "tool-cli"
-description = "CLI for wtools-template"
+name = "rrulex-cli"
+description = "A CLI tool"
 version.workspace = true
 edition.workspace = true
 license.workspace = true
 repository.workspace = true
 
 [[bin]]
-name = "tool-cli"
+name = "rrulex-cli"
 path = "src/main.rs"
 
 [dependencies]
-tool-core = { path = "../tool-core" }
+rrulex-core = { path = "../rrulex-core" }
 clap = { version = "4", features = ["derive"] }
 serde_json = "1"
 tracing = "0.1"

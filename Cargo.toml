@@ -1,9 +1,9 @@
 [workspace]
-members = ["crates/tool-core", "crates/tool-cli"]
+members = ["crates/rrulex-core", "crates/rrulex-cli"]
 resolver = "2"
 
 [workspace.package]
 version = "0.1.0"
 edition = "2024"
 license = "MIT OR Apache-2.0"
-repository = "https://github.com/OWNER/REPO"
+repository = "https://github.com/TorstenCScholz/rrulex.git"

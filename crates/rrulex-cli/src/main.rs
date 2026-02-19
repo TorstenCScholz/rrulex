@@ -3,7 +3,7 @@ use std::process::ExitCode;
 
 use anyhow::{Context, Result};
 use clap::Parser;
-use tool_core::{TextStats, analyze};
+use rrulex_core::{TextStats, analyze};
 use tracing::debug;
 
 /// A text analysis tool — analyze files for word counts, character stats, and more.

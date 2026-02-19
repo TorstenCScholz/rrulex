@@ -61,7 +61,7 @@ fn golden_json_output() {
         let stem = fixture_path.file_stem().unwrap().to_str().unwrap();
         let golden_path = golden.join(format!("{stem}.json"));
 
-        let output = Command::new(env!("CARGO_BIN_EXE_tool-cli"))
+        let output = Command::new(env!("CARGO_BIN_EXE_rrulex"))
             .arg("--format")
             .arg("json")
             .arg(&fixture_path)

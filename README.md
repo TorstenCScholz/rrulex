@@ -1,5 +1,7 @@
 # rrulex
 
+[![CI](https://github.com/TorstenCScholz/rrulex/actions/workflows/ci.yml/badge.svg)](https://github.com/TorstenCScholz/rrulex/actions/workflows/ci.yml)
+
 Deterministic RFC 5545 recurrence tooling for CLI workflows.
 
 `rrulex` expands RRULE-based schedules, lints common spec footguns, and explains inclusion/exclusion for a concrete datetime.

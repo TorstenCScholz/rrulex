@@ -35,6 +35,10 @@ fn update_golden() -> bool {
     std::env::var("UPDATE_GOLDEN").is_ok()
 }
 
+fn normalize_newlines(input: &str) -> String {
+    input.replace("\r\n", "\n")
+}
+
 fn diff_strings(expected: &str, actual: &str) -> String {
     let diff = TextDiff::from_lines(expected, actual);
     let mut out = String::new();
@@ -86,6 +90,8 @@ fn fixture_cases() {
             .unwrap_or_else(|e| panic!("Stdout not UTF-8 for case {case_name}: {e}"));
         let stderr = String::from_utf8(output.stderr)
             .unwrap_or_else(|e| panic!("Stderr not UTF-8 for case {case_name}: {e}"));
+        let stdout = normalize_newlines(&stdout);
+        let stderr = normalize_newlines(&stderr);
 
         if status_code != case.expected_exit {
             panic!(
@@ -125,6 +131,7 @@ fn fixture_cases() {
                  Hint: run with UPDATE_GOLDEN=1 cargo test -p rrulex --test golden_tests"
             )
         });
+        let expected = normalize_newlines(&expected);
 
         if expected != stdout {
             let diff = diff_strings(&expected, &stdout);
